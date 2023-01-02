@@ -1,0 +1,26 @@
+stageResults = [:]
+
+pipeline{
+    stages{
+        stage('Stage 1'){
+            try{
+                steps{
+                    // stageResults.env.STAGE_NAME = "SUCCESS"
+                    echo "Stage Name : ${env.STAGE_NAME}"
+                }
+            }
+            catch(Exception e){
+                // stageResults.env.STAGE_NAME = "UNSTABLE"
+            }
+        }
+        stage('Stage 2'){
+            try{
+                steps{
+                    echo "Stage Name : ${env.STAGE_NAME}"
+                }
+            }
+            catch(Exception e){
+            }
+        }
+    }
+}
