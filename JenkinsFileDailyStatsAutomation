@@ -1,6 +1,11 @@
 stageResults = [:]
 
 pipeline{
+    agent{
+        node {
+            label 'docker-2xlarge'
+        }
+    }
     stages{
         stage('Stage 1'){
             steps{
