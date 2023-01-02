@@ -20,10 +20,12 @@ pipeline{
             steps{
                 script{
                     try{
+                        error "Error"
                         echo "Stage Name : ${env.STAGE_NAME}"
                         stageResults."${env.STAGE_NAME}" = "SUCCESS"
                     }
                     catch(Exception e){
+                        stageResults."${env.STAGE_NAME}" = "UNSTABLE"
                     }
                 }
             }
