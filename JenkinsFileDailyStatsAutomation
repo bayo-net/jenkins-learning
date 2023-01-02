@@ -33,6 +33,7 @@ pipeline{
         always {
             script{
                 echo "All stage details: ${stageResults.keySet()}"
+                map.each{ k, v -> println "${k}:${v}"}
             }
         }
     }
