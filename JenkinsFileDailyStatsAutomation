@@ -10,10 +10,7 @@ pipeline{
         stage('Stage 1'){
             steps{
                 try{
-                    steps{
-                        // stageResults.env.STAGE_NAME = "SUCCESS"
-                        echo "Stage Name : ${env.STAGE_NAME}"
-                    }
+                    echo "Stage Name : ${env.STAGE_NAME}"
                 }
                 catch(Exception e){
                     // stageResults.env.STAGE_NAME = "UNSTABLE"
@@ -23,9 +20,7 @@ pipeline{
         stage('Stage 2'){
             steps{
                 try{
-                    steps{
-                        echo "Stage Name : ${env.STAGE_NAME}"
-                    }
+                    echo "Stage Name : ${env.STAGE_NAME}"
                 }
                 catch(Exception e){
                 }
