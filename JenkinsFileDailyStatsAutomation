@@ -9,20 +9,24 @@ pipeline{
     stages{
         stage('Stage 1'){
             steps{
-                try{
-                    echo "Stage Name : ${env.STAGE_NAME}"
-                }
-                catch(Exception e){
-                    // stageResults.env.STAGE_NAME = "UNSTABLE"
+                script{
+                    try{
+                        echo "Stage Name : ${env.STAGE_NAME}"
+                    }
+                    catch(Exception e){
+                        // stageResults.env.STAGE_NAME = "UNSTABLE"
+                    }
                 }
             }
         }
         stage('Stage 2'){
             steps{
-                try{
-                    echo "Stage Name : ${env.STAGE_NAME}"
-                }
-                catch(Exception e){
+                script{
+                    try{
+                        echo "Stage Name : ${env.STAGE_NAME}"
+                    }
+                    catch(Exception e){
+                    }
                 }
             }
         }
