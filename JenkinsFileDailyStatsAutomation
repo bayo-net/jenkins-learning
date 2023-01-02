@@ -33,8 +33,8 @@ pipeline{
         always {
             script{
                 // echo "All stage details: ${stageResults}"
-                for(e in stageResults){
-                    print "key = ${e.key}, value = ${e.value}"
+                map.each{
+                    println it.key + " " + it.value
                 }
             }
         }
