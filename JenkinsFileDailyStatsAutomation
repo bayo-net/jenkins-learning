@@ -20,11 +20,11 @@ pipeline{
             steps{
                 script{
                     try{
-                        error "Error"
-                        echo "Stage Name : ${env.STAGE_NAME}"
+                        echo "Stage Name : ${env.STAGE_NAME} ${TEST}"
                         stageResults."${env.STAGE_NAME}" = "SUCCESS"
                     }
                     catch(Exception e){
+                        error("Caught exception")
                         currentBuild.result = "FAILURE"
                         stageResults."${env.STAGE_NAME}" = "FAILURE"
                     }
@@ -35,7 +35,6 @@ pipeline{
     post {
         always {
             script{
-                echo "All stage details: ${stageResults.keySet()}"
                 for(element in stageResults){
                     echo "${element.key} ${element.value}"
                 }
