@@ -31,7 +31,12 @@ pipeline{
     }
     post {
         always {
-            echo "All stage details: ${stageResults}"
+            script{
+                echo "All stage details: ${stageResults}"
+                for(e in stageResults){
+                    echo "key = ${e.key}, value = ${e.value}"
+                }
+            }
         }
     }
 }
