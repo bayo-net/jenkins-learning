@@ -8,6 +8,7 @@ pipeline{
                 script{
                     try{
                         echo "Stage Name : ${env.STAGE_NAME}"
+                        stageResults.env.STAGE_NAME = "SUCCESS"
                     }
                     catch(Exception e){
                         // stageResults.env.STAGE_NAME = "UNSTABLE"
@@ -20,10 +21,16 @@ pipeline{
                 script{
                     try{
                         echo "Stage Name : ${env.STAGE_NAME}"
+                        stageResults.env.STAGE_NAME = "SUCCESS"
                     }
                     catch(Exception e){
                     }
                 }
+            }
+        }
+        post {
+            always {
+                echo "All stage details: ${stageResults}"
             }
         }
     }
