@@ -25,7 +25,8 @@ pipeline{
                         stageResults."${env.STAGE_NAME}" = "SUCCESS"
                     }
                     catch(Exception e){
-                        stageResults."${env.STAGE_NAME}" = "UNSTABLE"
+                        currentBuild.result = "FAILURE"
+                        stageResults."${env.STAGE_NAME}" = "FAILURE"
                     }
                 }
             }
