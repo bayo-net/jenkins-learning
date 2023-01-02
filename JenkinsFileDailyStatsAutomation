@@ -26,7 +26,6 @@ pipeline{
                     catch(Exception e){
                         currentBuild.result = "FAILURE"
                         stageResults."${env.STAGE_NAME}" = "FAILURE"
-                        error("Caught exception")
                     }
                 }
             }
