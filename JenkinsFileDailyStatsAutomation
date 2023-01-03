@@ -5,7 +5,6 @@ pipeline{
 
     environment{
         def BUILD_VERSION = sh(script: "echo `date +%s`", returnStdout: true).trim()
-        echo "${BUILD_VERSION}"
     }
 
     stages{
