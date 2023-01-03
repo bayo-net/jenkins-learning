@@ -26,6 +26,7 @@ pipeline{
                     catch(Exception e){
                         currentBuild.result = "FAILURE"
                         stageResults."${env.STAGE_NAME}" = "FAILURE"
+                        error("Caught exception")
                     }
                 }
             }
@@ -37,6 +38,7 @@ pipeline{
                 for(element in stageResults){
                     echo "${element.key} ${element.value}"
                 }
+                echo "Build time: ${env.BUILD_ID}"
             }
         }
     }
