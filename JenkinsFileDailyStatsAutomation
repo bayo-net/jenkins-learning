@@ -4,7 +4,8 @@ pipeline{
     agent any
 
     environment{
-        def BUILD_VERSION = sh(script: "echo `data +%s`", returnStdout: true).trim()
+        def BUILD_VERSION = sh(script: "echo `date +%s`", returnStdout: true).trim()
+        echo "${BUILD_VERSION}"
     }
 
     stages{
@@ -43,7 +44,7 @@ pipeline{
                 for(element in stageResults){
                     echo "${element.key} ${element.value}"
                 }
-                echo "Current build version: ${BUILD_VERSION}"
+                // echo "Current build version: ${BUILD_VERSION}"
             }
         }
     }
