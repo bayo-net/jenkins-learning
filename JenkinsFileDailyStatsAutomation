@@ -23,9 +23,7 @@ pipeline{
 
         stage('Init'){
             steps{
-                script{
-                    initEnvironment()
-                }
+                initEnvironment()
             }
         }
 
