@@ -1,13 +1,5 @@
 stageResults = [:]
 
-def initEnvironment(){
-    sh 'apt-get update'
-    sh 'curl -slK https://deb.nodesource.com/setup_14.x | bash -'
-    sh 'apt install -y nodejs'
-    sh 'apt-get install -y jq'
-    sh 'node -v'
-}
-
 pipeline{
     agent any
 
@@ -17,6 +9,14 @@ pipeline{
 
     environment{
         BUILD_TIMESTAMP = sh(script: "echo `date +'%m-%d-%Y'`", returnStdout: true).trim()
+    }
+
+    def initEnvironment(){
+        sh 'apt-get update'
+        sh 'curl -slK https://deb.nodesource.com/setup_14.x | bash -'
+        sh 'apt install -y nodejs'
+        sh 'apt-get install -y jq'
+        sh 'node -v'
     }
 
     stages{
