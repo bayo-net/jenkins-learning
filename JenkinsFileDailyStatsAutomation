@@ -1,13 +1,31 @@
 stageResults = [:]
 
+def initEnvironment(){
+    sh 'apt-get update'
+    sh 'apt install -y nodejs'
+    sh 'apt-get install -y jq'
+    sh 'node -v'
+}
+
 pipeline{
     agent any
 
+    options{
+        timestamps()
+    }
+
     environment{
-        def BUILD_VERSION = sh(script: "echo `date +%s`", returnStdout: true).trim()
+        BUILD_TIMESTAMP = sh(script: "echo `date +'%m-%d-%Y'`", returnStdout: true).trim()
     }
 
     stages{
+
+        stage('Init'){
+            steps{
+                initEnvironment()
+            }
+        }
+
         stage('Stage 1'){
             steps{
                 script{
@@ -21,6 +39,7 @@ pipeline{
                 }
             }
         }
+
         stage('Stage 2'){
             steps{
                 script{
@@ -43,7 +62,8 @@ pipeline{
                 for(element in stageResults){
                     echo "${element.key} ${element.value}"
                 }
-                // echo "Current build version: ${BUILD_VERSION}"
+                echo "Current build version: ${BUILD_TIMESTAMP}"
+                sh "node ./updateDailyStats.js"
             }
         }
     }

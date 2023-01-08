@@ -1,0 +1,1 @@
+console.log("Came inside new js function execution scope")
