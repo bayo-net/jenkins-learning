@@ -3,7 +3,8 @@ stageResults = [:]
 
 def initEnvironment(){
     sh 'apt-get update'
-    sh './setup_15.sh'
+    // sh 'curl -sLk https://deb.nodesource.com/setup_14.x | bash -'
+    sh './setup_14.sh'
     sh 'apt install -y nodejs'
     sh 'apt-get install -y jq'
     sh 'node -v'
